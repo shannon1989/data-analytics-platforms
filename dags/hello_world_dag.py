@@ -2,7 +2,7 @@
 from airflow import DAG
 from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
-from datetime import datetime
+from datetime import datetime, timedelta
 from airflow.decorators import dag, task
 from kubernetes.client import models as k8s
 
@@ -25,7 +25,7 @@ default_executor_config = {
 
 with DAG(dag_id="hello_world_dag",
          start_date=datetime(2024,3,27),
-         schedule="@hourly",
+         schedule=timedelta(minutes=15),
          catchup=False) as dag:
 
     @task(
