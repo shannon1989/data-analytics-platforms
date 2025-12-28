@@ -25,7 +25,7 @@ default_executor_config = {
 
 with DAG(dag_id="hello_world_dag",
          start_date=datetime(2024,3,27),
-         schedule=timedelta(minutes=5),
+         schedule=timedelta(minutes=15),
          catchup=False) as dag:
 
     @task(
