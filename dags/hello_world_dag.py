@@ -14,8 +14,8 @@ default_executor_config = {
                 k8s.V1Container(
                     name="base",
                     resources=k8s.V1ResourceRequirements(
-                        requests={"cpu": "100m", "memory": "128Mi"},
-                        limits={"cpu": "200m", "memory": "256Mi"}
+                        requests={"cpu": "250m", "memory": "512Mi"},
+                        limits={"cpu": "500m", "memory": "1Gi"}
                     )
                 )
             ]
