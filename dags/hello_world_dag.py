@@ -6,22 +6,23 @@ from datetime import datetime, timedelta
 from airflow.decorators import dag, task
 from kubernetes.client import models as k8s
 
+default_executor_config = {}
 
-default_executor_config = {
-    "pod_override": k8s.V1Pod(
-        spec=k8s.V1PodSpec(
-            containers=[
-                k8s.V1Container(
-                    name="base",
-                    resources=k8s.V1ResourceRequirements(
-                        requests={"cpu": "250m", "memory": "512Mi"},
-                        limits={"cpu": "500m", "memory": "1Gi"}
-                    )
-                )
-            ]
-        )
-    )
-} # end of default_executor_config
+# default_executor_config = {
+#     "pod_override": k8s.V1Pod(
+#         spec=k8s.V1PodSpec(
+#             containers=[
+#                 k8s.V1Container(
+#                     name="base",
+#                     resources=k8s.V1ResourceRequirements(
+#                         requests={"cpu": "250m", "memory": "512Mi"},
+#                         limits={"cpu": "500m", "memory": "1Gi"}
+#                     )
+#                 )
+#             ]
+#         )
+#     )
+# } 
 
 with DAG(dag_id="hello_world_dag",
          start_date=datetime(2024,3,27),
